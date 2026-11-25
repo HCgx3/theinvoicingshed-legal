@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Email confirmed - The Invoicing Shed</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Supabase adds sign-in details after the # in this page's address.
+    // Remove them straight away so they are not kept in the browser history.
+    var failed = /error/.test(location.hash);
+    if (location.hash) history.replaceState(null, '', location.pathname);
+  </script>
+</head>
+<body>
+<main>
+  <header class="site"><a href="index.html">The Invoicing Shed</a></header>
+
+  <div id="ok">
+    <h1>Your email is confirmed</h1>
+    <p>Go back to The Invoicing Shed and sign in with your email and password.</p>
+    <p><a class="button" href="theinvoicingshed://settings/account">Open The Invoicing Shed</a></p>
+    <p class="updated">If the button does nothing, open the app from your home screen.</p>
+  </div>
+
+  <div id="failed" hidden>
+    <h1>This link has expired</h1>
+    <p>Confirmation links only work once and for a limited time. Open The Invoicing Shed and create your account again, or sign in if you already confirmed it.</p>
+    <p><a class="button" href="theinvoicingshed://settings/account">Open The Invoicing Shed</a></p>
+  </div>
+  <script>
+    if (failed) {
+      document.getElementById('ok').hidden = true;
+      document.getElementById('failed').hidden = false;
+    }
+  </script>
+</main>
+</body>
+</html>
